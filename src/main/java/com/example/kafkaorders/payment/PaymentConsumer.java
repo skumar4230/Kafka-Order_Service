@@ -26,10 +26,12 @@ public class PaymentConsumer {
         System.out.println("CALLING PAYMENT GATEWAY...");
 
         String response = restClient.post()
-                .uri("/fake-payment/charge")
+                .uri(uriBuilder -> uriBuilder
+                        .path("/fake-payment/charge")
+                        .queryParam("orderId", event.orderId())
+                        .build())
                 .retrieve()
                 .body(String.class);
-
         System.out.println("PAYMENT GATEWAY CALL FINISHED");
         System.out.println("PAYMENT GATEWAY RESPONSE: " + response);
         // existing payment logic
