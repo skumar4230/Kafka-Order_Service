@@ -23,12 +23,15 @@ public class PaymentConsumer {
     @KafkaListener(topics = "${app.kafka.topics.orders}", groupId = "payment-service")
     public void consume(OrderCreatedEvent event) {
 
-        System.out.println("PAYMENT ATTEMPT: " + event.orderId() + " | eventId=" + event.eventId());
+        System.out.println("CALLING PAYMENT GATEWAY...");
 
-        String response = restClient.post().uri("/fake-payment/charge").retrieve().body(String.class);
+        String response = restClient.post()
+                .uri("/fake-payment/charge")
+                .retrieve()
+                .body(String.class);
 
+        System.out.println("PAYMENT GATEWAY CALL FINISHED");
         System.out.println("PAYMENT GATEWAY RESPONSE: " + response);
-
         // existing payment logic
         if (event.amount().signum() < 0) {
             throw new IllegalStateException("Negative amount");

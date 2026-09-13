@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FakePaymentGatewayController {
 
     @PostMapping("/charge")
-    public String charge() throws InterruptedException {
-        Thread.sleep(5000);
-        return "PAYMENT APPROVED";
+    public String charge() {
+        throw new RuntimeException("PAYMENT GATEWAY DOWN");
     }
 }
