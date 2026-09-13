@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="UltimateRestApiCache">
+    <cachedApis>
+      <api method="POST" url="/orders" className="com.example.kafkaorders.order.OrderController" methodName="create" moduleName="kafka-order-system">
+        <params>
+          <param name="body" value="{ }" type="BODY" dataType="CreateOrderRequest" />
+        </params>
+      </api>
+      <api method="GET" url="/orders/{id}" className="com.example.kafkaorders.order.OrderController" methodName="get" moduleName="kafka-order-system">
+        <params>
+          <param name="id" value="1" type="PATH" dataType="UUID" />
+        </params>
+      </api>
+      <api method="GET" url="/products/{id}" className="com.example.kafkaorders.product.ProductController" methodName="get" moduleName="kafka-order-system">
+        <params>
+          <param name="id" value="test" type="PATH" dataType="String" />
+        </params>
+      </api>
+    </cachedApis>
+  </component>
+</project>
