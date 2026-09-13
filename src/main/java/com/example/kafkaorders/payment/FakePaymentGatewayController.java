@@ -34,6 +34,8 @@ public class FakePaymentGatewayController {
                         + orderId
         );
 
-        return "PAYMENT APPROVED";
+        throw new RuntimeException(
+                "RESPONSE LOST AFTER PAYMENT"
+        );
     }
 }
